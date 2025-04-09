@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact - Deeptrics</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css" />
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header>
@@ -27,10 +28,12 @@
     <div class="container">
       <h3>Contact Us</h3>
       <p>Let’s collaborate and build the future together. Reach out to us with your project idea.</p>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
+      <form id="myForm">
+        <!-- status after submission -->
+        <div id="statusMessage"></div>
+        <input type="text" placeholder="Your Name" required name="Name"/>
+        <input type="email" placeholder="Your Email" required name="email"/>
+        <textarea placeholder="Your Message" required name="body"></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
     </div>
@@ -47,26 +50,26 @@
         <div class="footer-links-column">
           <h4>About Us</h4>
           <a href="about.html">Company</a>
-          <a href="#">News</a>
-          <a href="#">Careers</a>
+          <!-- <a href="#">News</a>
+          <a href="#">Careers</a> -->
         </div>
   
         <div class="footer-links-column">
           <h4>Connect</h4>
           <a href="contact.html">Contact</a>
-          <a href="#">Support</a>
+          <!-- <a href="#">Support</a> -->
         </div>
-  
+<!--   
         <div class="footer-links-column">
           <h4>Take Action</h4>
           <a href="#">Get a Quote</a>
           <a href="#">Join Us</a>
-        </div>
+        </div> -->
   
         <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="https://x.com/DeepTrics" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/deeptrics_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/deeptrics-software-solutions-523428359" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         </div>
       </div>
   
@@ -78,6 +81,34 @@
       const navLinks = document.getElementById('nav-links');
       navLinks.classList.toggle('show');
     }
+    const form = document.getElementById('myForm');
+    var status = document.getElementById('statusMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // stop default form submission
+
+      const formData = new FormData(form);
+      const data = new URLSearchParams(formData);
+      console.log(data);
+
+      fetch('https://script.google.com/macros/s/AKfycbxiaIfW_Jbk4JnonBnwY-vlWBIfwLpK1sDSOxpIghtB1IKFOfKL7zmpg0cb1HgLvFfH/exec', {
+        method: 'POST',
+        body: data
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log(result);
+        // status.textContent = "Form submitted successfully!";
+        // status.style.color = "green";
+        form.reset(); // clear the form
+      })
+      .catch(error => {
+        // status.textContent = "Something went wrong. Please try again.";
+        // status.style.color = "red";
+        console.error('Error:', error);
+      });
+    });
+
   </script>
 </body>
 </html>
