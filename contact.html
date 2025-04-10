@@ -82,7 +82,7 @@
       navLinks.classList.toggle('show');
     }
     const form = document.getElementById('myForm');
-    var status = document.getElementById('statusMessage');
+    let status = document.getElementById('statusMessage');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault(); // stop default form submission
@@ -97,15 +97,13 @@
       })
       .then(response => response.text())
       .then(result => {
-        console.log(result);
-        // status.textContent = "Form submitted successfully!";
-        // status.style.color = "green";
+        status.innerText = "Form submitted successfully!";
+        status.classList.add('success-message');
         form.reset(); // clear the form
       })
       .catch(error => {
-        // status.textContent = "Something went wrong. Please try again.";
-        // status.style.color = "red";
-        console.error('Error:', error);
+        status.innerText = "Something went wrong. Please try again.";
+        status.classList.add('error-message');
       });
     });
 
