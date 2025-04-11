@@ -258,7 +258,62 @@
   .card p {
     color: var(--muted-text);
   }
+  #web-dev{
+    background: url('../../assets/images/background/web-app-bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
 
+  }
+  #web-dev::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.815); 
+    z-index: 0;
+    border-radius: 12px;
+    
+}
+#web-dev > * {
+    position: relative;
+    z-index: 1;
+}
+  #mobile-dev{
+    background: url('../../assets/images/background/mob-app-bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  #mobile-dev::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.815); 
+    z-index: 0;
+    border-radius: 12px;
+  }
+  #mobile-dev > * {
+    position: relative;
+    z-index: 1;
+  }
+  #ai-solutions{
+    background: url('../../assets/images/background/AI-sol-bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  #ai-solutions::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.815);
+    z-index: 0;
+    border-radius: 12px;
+  }
+  #ai-solutions > * {
+    position: relative;
+    z-index: 1;
+  }
   .contact form {
     display: flex;
     flex-direction: column;
@@ -366,7 +421,57 @@
     border-radius: 5px;
     padding: 5px 5px;
   }
-
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .modal.hidden {
+    display: none;
+    animation: fadeout 0.5s ease-in-out;
+  }
+  .modal-content {
+    background: var(--primary-color);
+    color: var(--muted-text);
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
   
 
   @media screen and (max-width: 768px) {

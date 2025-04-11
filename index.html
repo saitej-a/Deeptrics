@@ -73,7 +73,7 @@
       <p>Explore the wide range of software development services we offer, tailored to meet your needs.</p>
       <div class="cards">
   
-        <div class="card">
+        <div class="card" id="web-dev">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" title="Django" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js" />
@@ -81,7 +81,7 @@
           <p>Build fast, responsive, and modern websites and web apps that scale. Technologies: React, Django, Node.js.</p>
         </div>
   
-        <div class="card">
+        <div class="card" id="mobile-dev">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" title="Flutter" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" title="Kotlin" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" title="React Native" />
@@ -89,7 +89,7 @@
           <p>Native & cross-platform mobile apps built using Flutter, Kotlin, and React Native with seamless user experience.</p>
         </div>
   
-        <div class="card">
+        <div class="card" id="ai-solutions">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" title="TensorFlow" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" title="PyTorch" />
@@ -147,7 +147,12 @@
       <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--muted-text); text-align: center;" >© 2025 DeepTrics. All rights reserved.</p>
     </div>
   </footer>
-  
+  <div id="card-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="modal-details"></div>
+    </div>
+  </div>
 
   <script>
     function toggleMenu() {
@@ -194,6 +199,28 @@
         status.innerText = "Something went wrong. Please try again.";
         status.classList.add('error-message');
       });
+    });
+  </script>
+  <script>
+    const modal = document.getElementById('card-modal');
+    const modalDetails = document.getElementById('modal-details');
+    const closeBtn = document.querySelector('.close-btn');
+  
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        modalDetails.innerHTML = card.innerText ;
+        modal.classList.remove('hidden');
+      });
+    });
+  
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
     });
   </script>
 </body>
